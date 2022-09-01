@@ -19,12 +19,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         title: 'DdoFlix',
         theme: ThemeData(
-            brightness: Brightness.dark,
-            primaryColor: Colors.black,
-            accentColor: Colors.white),
+            colorScheme:
+                ColorScheme.fromSwatch().copyWith(
+                    brightness: Brightness.dark,
+                    primary: Colors.black,
+                    secondary: Colors.white)),
         home: DefaultTabController(
             length: 4,
             child: Scaffold(
+              resizeToAvoidBottomInset: false,
               body: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
