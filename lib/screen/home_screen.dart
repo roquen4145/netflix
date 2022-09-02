@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:netflix/widget/carousel_slider.dart';
 
 import '../model/model_movie.dart';
+import '../widget/circle_slider.dart';
+import '../widget/box_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -42,7 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Stack(children: [CarouselImage(movies: movies), TopBar()])
+        Stack(children: [CarouselImage(movies: movies), TopBar()]),
+        CircleSlider(movies: movies),
+        BoxSlider(movies:movies)
       ],
     );
   }
