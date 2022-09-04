@@ -27,7 +27,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image:
-                              AssetImage('assets/images/' + widget.movie.poster),
+                              NetworkImage(widget.movie.poster),
                           fit: BoxFit.cover)),
                   child: ClipRect(
                     child: BackdropFilter(
@@ -40,8 +40,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             children: [
                               Container(
                                 padding: EdgeInsets.fromLTRB(0, 45, 0, 10),
-                                child: Image.asset(
-                                    'assets/images/' + widget.movie.poster),
+                                child: Image.network(widget.movie.poster),
                                 height: 300,
                               ),
                               Container(
