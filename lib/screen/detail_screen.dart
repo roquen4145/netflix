@@ -26,8 +26,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image:
-                              NetworkImage(widget.movie.poster),
+                          image: NetworkImage(widget.movie.poster),
                           fit: BoxFit.cover)),
                   child: ClipRect(
                     child: BackdropFilter(
@@ -66,25 +65,28 @@ class _DetailScreenState extends State<DetailScreen> {
                                 child: TextButton(
                                   onPressed: () {},
                                   style: TextButton.styleFrom(
-                                      primary: Colors.red),
+                                      backgroundColor: Colors.red),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [Icon(Icons.play_arrow), Text('재생')],
+                                    children: [
+                                      Icon(Icons.play_arrow),
+                                      Text('재생')
+                                    ],
                                   ),
                                 ),
                               ),
                               Container(
                                 padding: EdgeInsets.all(5),
-                                  child: Text(widget.movie.toString()),
+                                child: Text(widget.movie.toString()),
                               ),
                               Container(
                                 padding: EdgeInsets.all(5),
                                 alignment: Alignment.centerLeft,
-                                child: Text('출연: 현빈, 손예진, 서지헤\n제작자: 이정호, 박지은',
-                                style: TextStyle(
-                                  color: Colors.white60,
-                                  fontSize:12
-                                ),),
+                                child: Text(
+                                  '출연: 현빈, 손예진, 서지헤\n제작자: 이정호, 박지은',
+                                  style: TextStyle(
+                                      color: Colors.white60, fontSize: 12),
+                                ),
                               )
                             ],
                           ),
@@ -93,89 +95,84 @@ class _DetailScreenState extends State<DetailScreen> {
                     ),
                   ),
                 ),
-                Positioned(child: AppBar(
+                Positioned(
+                    child: AppBar(
                   backgroundColor: Colors.transparent,
-                    elevation: 0,
+                  elevation: 0,
                 ))
               ],
             ),
-            makeMenuButton(like),
+            Container(
+              color: Colors.black26,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          like = !like;
+                          widget.movie.reference?.update({'like': like});
+                        });
+                      },
+                      child: Column(
+                        children: [
+                          like ? Icon(Icons.check) : Icon(Icons.add),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                          ),
+                          Text(
+                            '내가 찜한 콘텐츠',
+                            style:
+                                TextStyle(fontSize: 11, color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.thumb_up),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                          ),
+                          Text(
+                            '평가',
+                            style:
+                                TextStyle(fontSize: 11, color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.send),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                          ),
+                          Text(
+                            '공유',
+                            style:
+                                TextStyle(fontSize: 11, color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         )),
       ),
     );
   }
-}
-
-Widget makeMenuButton(bool like) {
-  return Container(
-    color: Colors.black26,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-
-          children: [
-            Container(
-              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                child: InkWell(
-                  onTap: () {},
-                    child: Column(
-                      children: [
-                        like? Icon(Icons.check) : Icon(Icons.add),
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                        ),
-                        Text(
-                          '내가 찜한 콘텐츠',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: Colors.white60
-                          ),
-                        )
-                      ],
-                    ),
-                ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: Container(
-                child: Column(
-                  children: [
-                    Icon(Icons.thumb_up),
-                    Padding(
-                      padding: EdgeInsets.all(5),
-                    ),
-                    Text(
-                      '평가',
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.white60
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: Container(
-                child: Column(
-                  children: [
-                    Icon(Icons.send),
-                    Padding(
-                      padding: EdgeInsets.all(5),
-                    ),
-                    Text(
-                      '공유',
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.white60
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-      ),
-  );
 }
