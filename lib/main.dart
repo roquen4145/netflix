@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/screen/home_screen.dart';
 import 'package:netflix/screen/more_screen.dart';
+import 'package:netflix/screen/search_screen.dart';
 import 'package:netflix/widget/bottom_bar.dart';
 
 Future<void> main() async {
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   HomeScreen(),
-                  Container(child: Center(child: Text('search'))),
+                  SearchScreen(),
                   Container(child: Center(child: Text('save'))),
                   MoreScreen()
                 ],
